@@ -9,27 +9,18 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600&family=Source+Sans+Pro&display=swap" rel="stylesheet">
 
-    <style>
-      .section {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 100vh;
-      }
-    </style>
-
   </head>
 
   <body>
     <header>
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark py-4" aria-label="Eighth navbar example">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark py-4" aria-label="">
         <div class="container">
           <a class="navbar-brand" href="#">LOGO</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample07" aria-controls="navbarsExample07" aria-expanded="false" aria-label="Toggle navigation">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbars" aria-controls="navbars" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
     
-          <div class="collapse navbar-collapse" id="navbarsExample07">
+          <div class="collapse navbar-collapse" id="navbars">
             <ul class="navbar-nav d-inline-flex mt-2 mt-md-0 ms-md-auto">
               <li class="nav-item mx-1">
                 <a class="nav-link custom-active" aria-current="page" href="#">Item 1</a>
@@ -323,111 +314,5 @@
       </div>
     </footer>
   </body>
-
-  <script>
-    class Slider {
-      constructor(sliderElem) {
-        this.slider = sliderElem;
-        this.sliderItems = sliderElem.getElementsByClassName("slider-item");
-        this.indicators = sliderElem.getElementsByClassName("slide-indicator");
-        this.nextBtn = sliderElem.querySelector(".slider-control-next");
-        this.prevBtn = sliderElem.querySelector(".slider-control-prev");
-        this.currentIndex = 0;
-        this.prevItemIndex = this.sliderItems.length - 1;
-        this.nextItemIndex = 1;
-        this.isSliding = false;
-        
-        for (let i = 0; i < this.sliderItems.length; i++) {
-          if (this.sliderItems[i].classList.contains("active")){
-            this.currentIndex = i;
-            if (i + 1 === this.sliderItems.length) {
-                this.nextItemIndex = 0;
-            }
-            this.nextItemIndex = i + 1;
-            if (i !== 0) {
-                this.prevItemIndex = i - 1;
-            }
-            break;
-          }
-        }
-        this.setEventListeners();
-        this.indicators[this.currentIndex].classList.add("active");
-      }
-
-      setEventListeners() {
-        this.prevBtn.addEventListener("click", () => {
-          this.prev();
-        });
-        this.nextBtn.addEventListener("click", () => {
-          this.next();
-        });
-      }
-
-      setIndices(direction) { 
-        let index;
-        if (direction === "NEXT") {
-          index = this.currentIndex === this.sliderItems.length - 1 ? 0 : this.currentIndex + 1;
-        } 
-        if (direction === "PREV") {
-          index = this.currentIndex === 0 ? this.sliderItems.length - 1 : this.currentIndex - 1;
-        }
-        if (index === 0) {
-          this.currentIndex = index;
-          this.nextItemIndex = index + 1;
-          this.prevItemIndex = this.sliderItems.length - 1;
-        } else if (index === this.sliderItems.length - 1) {
-          this.currentIndex = this.sliderItems.length - 1;
-          this.nextItemIndex = 0;
-          this.prevItemIndex = this.currentIndex - 1;
-        } else {
-          this.currentIndex = index;
-          this.nextItemIndex = index + 1;
-          this.prevItemIndex = index - 1;
-        }
-      }
-
-      next() {
-        if (this.isSliding) return;
-        this.isSliding = !this.isSliding;
-        this.sliderItems[this.nextItemIndex].classList.add("next-item");
-        setTimeout(() => {
-          this.sliderItems[this.currentIndex].classList.add("slide-next");
-          this.sliderItems[this.nextItemIndex].classList.add("slide-end");
-          this.sliderItems[this.nextItemIndex].classList.add("active");
-        }, 20);
-        setTimeout(() => {
-          this.sliderItems[this.nextItemIndex].classList.remove("next-item", "slide-end");
-          this.sliderItems[this.currentIndex].classList.remove("slide-next", "active");
-          this.indicators[this.currentIndex].classList.remove("active");
-          this.indicators[this.nextItemIndex].classList.add("active");
-          this.setIndices("NEXT");
-          this.isSliding = false;
-        }, 400);
-      }
-
-      prev() {
-        if (this.isSliding) return;
-        this.isSliding = !this.isSliding;
-        this.sliderItems[this.prevItemIndex].classList.add("prev-item");
-        setTimeout(() => {
-          this.sliderItems[this.currentIndex].classList.add("slide-prev");
-          this.sliderItems[this.prevItemIndex].classList.add("slide-end");
-          this.sliderItems[this.prevItemIndex].classList.add("active");
-        }, 20);
-        setTimeout(() =>  {
-          this.sliderItems[this.prevItemIndex].classList.remove("prev-item", "slide-end");
-          this.sliderItems[this.currentIndex].classList.remove("slide-prev", "active");
-          this.indicators[this.currentIndex].classList.remove("active");
-          this.indicators[this.prevItemIndex].classList.add("active");
-          this.setIndices("PREV");
-          this.isSliding = false;
-        }, 400);
-      }
-    }
-
-    const slider = new Slider(
-      document.querySelector(".slider")
-    );
-  </script>
 
 </html>

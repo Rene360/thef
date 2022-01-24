@@ -5,6 +5,12 @@ $body-background: #f0f0f0;
 body {
   background-color: $body-background;
 }
+.section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
 
 header {
   background-color: $color-grey;
@@ -188,7 +194,6 @@ footer {
 
   .content {
     background-color: $color-white;
-    // height: 100vh;
     height: 564px;
     padding: 8rem 1.8rem;
 
@@ -246,7 +251,7 @@ footer {
   position: absolute;
   z-index: 20;
   bottom: 0;
-  left: 52%;
+  left: 54.5%;
   transform: translateX(-50%);
   list-style: none;
   padding: 0;
