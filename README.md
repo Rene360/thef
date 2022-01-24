@@ -1,13 +1,18 @@
-# Vanilla SPA
-A simple example of a Single Page Application using Javascript, HTML, and CSS.
+# THEF
 
-Tools used in this example are:
-* Webpack
-* Sass
+Technical test for the company The Electric Factory
+
+Tecnologies used in this test are:
+
+- Webpack
+- Sass
+- Bootstrap 5
+- Javascript
 
 # Installation
 
 First install dependencies
+
 ```shell
 npm install
 npm start # to execute in development mode
